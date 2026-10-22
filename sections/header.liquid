@@ -122,6 +122,19 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  {% if template.name == 'index' %}
+    .section-header {
+      margin-bottom: -8rem !important;
+    }
+
+    .section-header .header-wrapper,
+    .section-header .header-wrapper.gradient {
+      background: transparent !important;
+      border-bottom: 0 !important;
+      --color-foreground: 241, 238, 228;
+    }
+  {% endif %}
 {%- endstyle -%}
 
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
