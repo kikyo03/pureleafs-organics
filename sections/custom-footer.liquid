@@ -1,0 +1,313 @@
+{%- liquid
+  assign facebook = section.settings.facebook_url | default: settings.social_facebook_link
+  assign twitter = section.settings.twitter_url | default: settings.social_twitter_link
+  assign instagram = section.settings.instagram_url | default: settings.social_instagram_link
+  assign col_count = section.blocks.size
+  if col_count < 1
+    assign col_count = 1
+  endif
+-%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<footer class="pl-footer color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="pl-footer__top" style="--pl-cols: {{ col_count }}; --pl-logo: {{ section.settings.logo_width }}px;">
+      <div class="pl-footer__brand">
+        <a href="{{ routes.root_url }}" class="pl-footer__logo">
+          {%- if section.settings.logo != blank -%}
+            {{
+              section.settings.logo
+              | image_url: width: 600
+              | image_tag: class: 'pl-footer__logo-image', loading: 'lazy', widths: '300, 600'
+            }}
+          {%- else -%}
+            <span class="pl-footer__logo-text">{{ shop.name }}</span>
+          {%- endif -%}
+        </a>
+
+        {%- if section.settings.tagline != blank -%}
+          <p class="pl-footer__tagline">{{ section.settings.tagline }}</p>
+        {%- endif -%}
+
+        {%- if facebook != blank or twitter != blank or instagram != blank -%}
+          <ul class="pl-footer__social">
+            {%- if facebook != blank -%}
+              <li>
+                <a href="{{ facebook }}" aria-label="Facebook" target="_blank" rel="noopener">
+                  {% render 'icon-facebook' %}
+                </a>
+              </li>
+            {%- endif -%}
+            {%- if twitter != blank -%}
+              <li>
+                <a href="{{ twitter }}" aria-label="Twitter" target="_blank" rel="noopener">
+                  {% render 'icon-twitter' %}
+                </a>
+              </li>
+            {%- endif -%}
+            {%- if instagram != blank -%}
+              <li>
+                <a href="{{ instagram }}" aria-label="Instagram" target="_blank" rel="noopener">
+                  {% render 'icon-instagram' %}
+                </a>
+              </li>
+            {%- endif -%}
+          </ul>
+        {%- endif -%}
+      </div>
+
+      {%- for block in section.blocks -%}
+        <nav class="pl-footer__col" {{ block.shopify_attributes }}>
+          {%- if block.settings.heading != blank -%}
+            <h3 class="pl-footer__col-heading">{{ block.settings.heading }}</h3>
+          {%- endif -%}
+          {%- if block.settings.menu != blank -%}
+            <ul class="pl-footer__links">
+              {%- for link in block.settings.menu.links -%}
+                <li>
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </nav>
+      {%- endfor -%}
+    </div>
+
+    <div class="pl-footer__bottom">
+      <p class="pl-footer__copy">
+        &copy; {{ 'now' | date: '%Y' }}
+        {{ shop.name }}. {{ section.settings.copyright }}
+      </p>
+
+      {%- if section.settings.legal_menu != blank -%}
+        <ul class="pl-footer__legal">
+          {%- for link in section.settings.legal_menu.links -%}
+            <li>
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+</footer>
+
+{% stylesheet %}
+  .pl-footer ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .pl-footer a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Top area: brand + link columns */
+  .pl-footer__top {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem 3rem;
+  }
+  .pl-footer__brand {
+    grid-column: 1 / -1;
+  }
+
+  @media screen and (min-width: 990px) {
+    .pl-footer__top {
+      grid-template-columns: 1.6fr repeat(var(--pl-cols), 1fr);
+      gap: 3rem 4rem;
+    }
+    .pl-footer__brand {
+      grid-column: auto;
+    }
+  }
+
+  /* Brand */
+  .pl-footer__logo {
+    display: inline-block;
+  }
+  .pl-footer__logo-image {
+    display: block;
+    width: var(--pl-logo);
+    height: auto;
+  }
+  .pl-footer__logo-text {
+    font-family: var(--font-heading-family);
+    font-size: 2.8rem;
+  }
+  .pl-footer__tagline {
+    max-width: 28rem;
+    margin: 2rem 0;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    opacity: 0.8;
+  }
+
+  /* Social icons: round, filled with the text color */
+  .pl-footer__social {
+    display: flex;
+    gap: 1.2rem;
+  }
+  .pl-footer__social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+    background: rgb(var(--color-foreground));
+    color: rgb(var(--color-background));
+    transition: opacity 0.2s ease;
+  }
+  .pl-footer__social a:hover {
+    opacity: 0.8;
+  }
+  .pl-footer__social svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  /* Link columns */
+  .pl-footer__col-heading {
+    margin: 0 0 2.4rem;
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+  .pl-footer__links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+  .pl-footer__links a {
+    font-size: 1.4rem;
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
+  }
+  .pl-footer__links a:hover {
+    opacity: 1;
+  }
+
+  /* Bottom bar */
+  .pl-footer__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.6rem 3rem;
+    margin-top: 5rem;
+    padding-top: 2.4rem;
+    border-top: 1px solid rgba(var(--color-foreground), 0.15);
+    font-size: 1.3rem;
+  }
+  .pl-footer__copy {
+    margin: 0;
+    opacity: 0.8;
+  }
+  .pl-footer__legal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem 3rem;
+  }
+  .pl-footer__legal a {
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+  }
+  .pl-footer__legal a:hover {
+    opacity: 1;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Custom footer",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-3"
+    },
+    { "type": "header", "content": "Brand" },
+    { "type": "image_picker", "id": "logo", "label": "Logo (leave empty to show the store name)" },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo width",
+      "min": 80,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "default": 140
+    },
+    {
+      "type": "textarea",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Our vision is to provide convenience and help increase your sales business."
+    },
+    { "type": "header", "content": "Social links" },
+    { "type": "url", "id": "facebook_url", "label": "Facebook" },
+    { "type": "url", "id": "twitter_url", "label": "Twitter" },
+    { "type": "url", "id": "instagram_url", "label": "Instagram" },
+    { "type": "header", "content": "Bottom bar" },
+    { "type": "text", "id": "copyright", "label": "Copyright text", "default": "All rights reserved" },
+    { "type": "link_list", "id": "legal_menu", "label": "Legal links menu" },
+    { "type": "header", "content": "Spacing" },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Link column",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "About" },
+        { "type": "link_list", "id": "menu", "label": "Menu" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom footer",
+      "blocks": [
+        { "type": "column", "settings": { "heading": "About" } },
+        { "type": "column", "settings": { "heading": "Community" } },
+        { "type": "column", "settings": { "heading": "Socials" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

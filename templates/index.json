@@ -9,62 +9,152 @@
  */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "hero_carousel_mjXa7b": {
+      "type": "hero-carousel",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "slide_r3DqMW": {
+          "type": "slide",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "image": "shopify://shop_images/Heros_V18.png",
+            "heading": "Naturally Crafted Skincare",
+            "subtext": "Gentle ingredients. Honest results.",
+            "button_label": "Shop now",
+            "button_link": ""
           }
         },
-        "button": {
-          "type": "buttons",
+        "slide_wECnCx": {
+          "type": "slide",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "image": "shopify://shop_images/Heros_V2.png",
+            "heading": "New Arrivals Are Here",
+            "subtext": "Explore our latest plant-based essentials.",
+            "button_label": "Browse Products",
+            "button_link": ""
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "slide_r3DqMW",
+        "slide_wECnCx"
       ],
+      "name": "Hero carousel",
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
+        "height": "large",
+        "autoplay": true,
+        "autoplay_speed": 5,
+        "fade_duration": 800,
+        "show_dots": true,
+        "heading_font": "dm_serif_display_n4",
+        "body_font": "poppins_n4",
+        "heading_size": 52,
+        "text_size": 16,
+        "text_align": "center",
+        "heading_color": "#ffffff",
+        "subtext_color": "#ffffff",
+        "overlay_color": "#2c4930",
+        "overlay_opacity": 10,
+        "button_style": "solid",
+        "button_shape": "pill",
+        "button_bg": "#2c4930",
+        "button_text": "#f1eee4"
+      }
+    },
+    "image_gallery_ApeAPB": {
+      "type": "image-gallery",
+      "blocks": {
+        "image_HdnTnN": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_1.png",
+            "caption": "",
+            "link": ""
+          }
+        },
+        "image_gdczf4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Heros_V2.png",
+            "caption": "",
+            "link": ""
+          }
+        },
+        "image_6PdMfy": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Heros_V18.png",
+            "caption": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_HdnTnN",
+        "image_gdczf4",
+        "image_6PdMfy"
+      ],
+      "name": "Image gallery",
+      "settings": {
+        "heading": "",
+        "layout": "mosaic",
+        "show_captions": true,
+        "row_height": 340,
+        "gap": 12,
+        "radius": 12,
         "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_rPq889": {
+      "type": "featured-collection",
+      "custom_css": [
+        ".collection .title-wrapper-with-link {justify-content: center; text-align: center;}",
+        ",.collection .card__information,.collection .card-information {text-align: center;}",
+        ",.collection .price__container {justify-content: center;}"
+      ],
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "",
+        "products_to_show": 4,
+        "title": "Bestsellers",
+        "heading_size": "h2",
+        "description": "<p>Loved by our community, crafted for your skin.</p>",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
+        "collection": "all",
+        "products_to_show": 8,
         "title": "Featured products",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
+        "enable_desktop_slider": false,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
+        "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -72,13 +162,170 @@
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_mGVVwb": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_YbmpFR": {
+          "type": "heading",
+          "settings": {
+            "heading": "&nbsp;Our Story&nbsp;",
+            "heading_size": "h1"
+          }
+        },
+        "text_e6BngC": {
+          "type": "text",
+          "settings": {
+            "text": "&nbsp;We started with a simple idea: create products that are <strong>beautiful</strong>, <strong>practical</strong>, and<strong> built to last</strong>.  No trends, no shortcuts just thoughtful design made for everyday life.Every piece we make is crafted with intention, focusing on <strong>quality</strong>, <strong>comfort</strong>, and the s<strong>mall details that make a big difference</strong>.We’re a small team with a big commitment: to make products you’ll <strong>use</strong>, <strong>love</strong>, and <strong>recommend</strong>. Thanks for being part of our journey.&nbsp;",
+            "text_style": "body"
+          }
+        },
+        "buttons_CBhwKd": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Subscribe to our Newsletter",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_YbmpFR",
+        "text_e6BngC",
+        "buttons_CBhwKd"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/About.png",
+        "image_overlay_opacity": 0,
+        "image_height": "large",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "scheme-3",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
+      }
+    },
+    "image_with_text_daFAgW": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_LqJLhD": {
+          "type": "heading",
+          "settings": {
+            "heading": "&nbsp;Glow Naturally, <em>Every Day</em>&nbsp;",
+            "heading_size": "h0"
+          }
+        },
+        "text_hqCGbj": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Simple skincare powered by nature. Thoughtfully made to hydrate, protect, and bring out your best skin.<br/></p>",
+            "text_style": "body"
+          }
+        },
+        "button_YVDfJj": {
+          "type": "button",
+          "settings": {
+            "button_label": "Start Your Routine",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_LqJLhD",
+        "text_hqCGbj",
+        "button_YVDfJj"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Frame_22.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_behavior": "zoom-in",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-3",
+        "color_scheme": "scheme-3",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_Dm4j7x": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_9mNAQ6": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_4ktrnC": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_jdz3G4": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_9mNAQ6",
+        "column_4ktrnC",
+        "column_jdz3G4"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "Testimonial",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "Button label",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
         "padding_bottom": 36
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "hero_carousel_mjXa7b",
+    "image_gallery_ApeAPB",
+    "featured_collection_rPq889",
+    "featured_collection",
+    "image_banner_mGVVwb",
+    "image_with_text_daFAgW",
+    "multicolumn_Dm4j7x"
   ]
 }
